@@ -39,6 +39,26 @@ public class PostagemController {
 						.orElse(ResponseEntity.notFound().build());
 	}
 	
+	@GetMapping(value = "/maior")
+	public ResponseEntity<List<PostagemModel>> findAllMaior() {
+		return ResponseEntity.ok(repository.findAllMaior());
+	}
+
+	@GetMapping(value = "/anos")
+	public ResponseEntity<List<PostagemModel>> findAllAnosDesc() {
+		return ResponseEntity.ok(repository.findAllAnosDesc());
+	}
+	
+	@GetMapping(value = "/intervalos")
+	public ResponseEntity<List<PostagemModel>> findAllIntervalos() {
+		return ResponseEntity.ok(repository.findAllAnosIntervalos());
+	}
+	
+	@GetMapping(value = "/menor")
+	public ResponseEntity<List<PostagemModel>> findAllAnosAsc() {
+		return ResponseEntity.ok(repository.findAllAnosAsc());
+	}
+	
 	@GetMapping ("/titulo/{titulo}")
 	public ResponseEntity<List<PostagemModel>> GetByTitulo(@PathVariable String titulo) {
 		return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
